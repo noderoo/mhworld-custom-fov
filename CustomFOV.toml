@@ -1,0 +1,111 @@
+#~~~~~~~~~~~~~~~~~~~~~~~~~~#  CustomFOV v1.6  #~~~~~~~~~~~~~~~~~~~~~~~~~#
+# by noderoo                                                 2024-10-07 #
+
+# Monster Hunter World uses many different camera settings depending on #
+# the situation and place you are in. This plugin allows you to tweak   #
+# the field of view and other camera values to your liking.             #
+
+# By default, this file is parsed again after every loading screen,     #
+# which will allow you to make adjustments without restarting the game. #
+
+# Set this option to 'false' to load this config file only once.        #
+live_reload = true
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~#  FOV (Field of View)  #~~~~~~~~~~~~~~~~~~~~~~~#
+
+# MHW expects vertical FOV values. If you are used to horizontal FOV,   #
+# you may want to use a converter. The default FOV during hunts is 53,  #
+# which is equal to about 83 horizontal FOV on 16:9 monitors.           #
+
+# The relationship between vertical and horizontal FOV is given by      #
+# tan(pi * horizontal / 360) / tan(pi * vertical / 360) = aspect_ratio. #
+# For a converter, visit https://themetalmuncher.github.io/fov-calc/    #
+
+# Choose the default vertical FOV: (68 vertical ~ 100 horizontal, 16:9) #
+fov.target = 68.0
+
+# Set this option to 'false' to force a constant field of view:         #
+fov.effects = true
+
+# Example: To use 120 horizontal FOV, first convert it to 89 vertical   #
+# and set fov.target = 89. This value assumes you use a 16:9 monitor.   #
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~#  Camera Distance  #~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+# This tweak is independent from the in-game "Camera Distance" setting. #
+# The default camera distance during hunts is 380.                      #
+
+# Choose the default camera distance:                                   #
+distance.target = 380.0
+
+# Set this option to 'false' to force a constant camera distance:       #
+distance.effects = true
+
+# Note: Internally, camera distances are negative, but the plugin deals #
+# in positive values for your convenience.                              #
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~#  Camera Height  #~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+# The default camera height during hunts is 180. Some actions such as   #
+# crouching and environments such as tunnels will modify the height.    #
+
+# Choose the default camera height:                                     #
+height.target = 180.0
+
+# Set this option to 'false' to force a constant camera height:         #
+height.effects = true
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~#  Camera Shifts  #~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+# Usually, the camera is centered behind the player, but some actions   #
+# and environments will shift the camera to the left (positive values)  #
+# or to the right (negative values).                                    #
+
+# Choose the default camera shift:                                      #
+shift.target = 0.0
+
+# Set this option to 'false' to force a constant horizontal shift:      #
+shift.effects = true
+
+# Example: To use an over-the-shoulder camera, try shift.target = -90.  #
+
+# To prevent effects from cancelling out your adjustment, setting a     #
+# non-zero shift target will cause all shift effects to be swapped to   #
+# the same side, ignoring their original orientation.                   #
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~#  Changelog  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+# Version 1.6 (2024-10-07)
+# - fix function addresses following update to 15.23.00 (421810)
+
+# Version 1.5 (2024-06-05)                                              #
+# - fix function addresses following update to 15.22.00 (421740)
+
+# Version 1.4 (2023-11-16)                                              #
+# - add more lenient version check to automatically support game
+#   updates with no breaking changes, both for vanilla and ICE.
+# - fix: only log success message after attaching & detaching plugin
+
+# Version 1.3 (2023-11-15)                                              #
+# - add support for version 15.21 (421652)
+
+# Version 1.2 (2023-11-10)                                              #
+# - add sane default config values if config file is missing
+# - add support for ICE build 314015
+# - fix ApplyQueued error by adding new thread freeze method
+
+# Version 1.1 (2023-11-06)                                              #
+# - add check for version 15.20.00 (421631)
+# - add live reload toggle (reparse config file during loading screens)
+# - add options for camera height and shift
+# - switch to more intuitive *.target and *.effects options
+# - add examples + more information to config
+# - transform fov before scaling (fixes scaling at high fov)
+# - log all camera changes on the same line
+
+# Version 1.0 (2023-10-31)                                              #
