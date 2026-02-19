@@ -1,4 +1,4 @@
 /.vs
-/x64
-/CustomFOV/x64
-/CustomFOV.vcxproj.user
+/build
+*.vcxproj.filters
+*.vcxproj.user
